@@ -10,7 +10,7 @@ const loadBooks = () => {
     if (searchText ==='') {
         errorMessage();
     }
-
+    
     else{
          document.getElementById('error-message').style.display = 'none';
         const url = `https://openlibrary.org/search.json?q=${searchText}`;
@@ -23,6 +23,7 @@ const loadBooks = () => {
 // error message
 const errorMessage = () => {
    const errorMess = document.getElementById('error-message');
+   errorMess.textContent = '';
    const div = document.createElement('div');
    div.innerHTML = `<div class="container rounded-3 shadow mt-5 text-center p-3 bg-dark"> 
    <h3 class=" fw-bold text-muted"> <span class="text-danger">No results found.</span> Search for books containing the " " phrase?</h3>
