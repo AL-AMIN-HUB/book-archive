@@ -5,6 +5,7 @@ const loadBooks = () => {
     // clear input value
     searchInput.value = '';
 
+    toggleSpinner('block')
     // error handle
     if (searchText === '') {
         errorMessage();
@@ -30,6 +31,7 @@ const errorMessage = () => {
             <h3 class=" fw-bold text-muted"> <span class="text-danger">No results found.</span> Search for books containing the phrase?</h3>
         </div>`;
     errorMess.appendChild(div);
+    toggleSpinner('none')
 };
 
 // books card declare
@@ -55,6 +57,7 @@ const bookCard = (books) => {
         div.innerHTML = `
             <h5 class="display-6 fs-5 fw-bolder container text-center mt-5">About result found: <span class="text-info fw-bolder">${books.length}</span></h5>`;
         booksResults.appendChild(div);
+        toggleSpinner('none')
 
         // get each book 
         books.forEach(book => {
@@ -73,5 +76,21 @@ const bookCard = (books) => {
             </div>`;
             booksContainer.appendChild(cardDiv);
         })
+        toggleSpinner('none');
     }
 };
+
+
+// spinner add
+const toggleSpinner = displaySpinner =>{
+   const spinner =  document.getElementById('spinner');
+   spinner.textContent = '';
+   spinner.style.display = displaySpinner;
+  const div = document.createElement('div')
+  div. innerHTML = `
+    <div class="spinner-grow mt-3" style="width: 3rem; height: 3rem;" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+  `;
+  spinner.appendChild(div);
+}
