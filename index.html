@@ -12,6 +12,7 @@
 </head>
 <body class="bg-light">
     <header>
+        <h1 class="text-center text-secondary text-uppercase pt-5 fw-bolder">Book Archive</h1>
         <!-- search input and button hear -->
                <div  class="input-group mb-3 w-50 mx-auto mt-5">
                    <input id="search-input" type="text" class="form-control form-control-lg fs-5"
@@ -21,11 +22,17 @@
     </header>
 
     <main>
+        <!-- error message -->
+        <section>
+          <div id="error-message"></div>
+        </section>
+
  <section>
 <!-- card books -->
-    <div id="books-container" class="container mx-auto mt-5 row row-cols-1 row-cols-md-4 g-4"></div>
+    <div id="books-container" class="w-75 mx-auto mt-5 row row-cols-1 row-cols-md-4 g-4"></div>
 
  </section>
+
     </main>
 
 
