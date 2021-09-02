@@ -64,10 +64,10 @@ const bookCard = (books) => {
             <div class="col">
                 <div class="card h-100 border-0 shadow rounded-3">
                         <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" class="card-img-top d-block img-fluid" alt="Cover image">
-                    <div class="card-body">
-                        <h6 class="card-title">Book Name: <span class="text-primary">${book.title}</span></h6>
-                        <p class="card-text">Author: ${book.author_name} </p>
-                        <p class="card-text">First Published: ${book.publish_year} </p>
+                    <div class="card-body text-center">
+                        <h3 class="card-title"><span class="text-secondary fw-bolder">${book.title}</span></h3>
+                        <p class="card-text lead">First Published: ${book.publish_year} </p>
+                        <p class="card-text lead">Author: ${book.author_name} </p>
                     </div>
                 </div>
             </div>`;
