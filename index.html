@@ -11,7 +11,22 @@
 
 </head>
 <body>
-    <h1>Welcome to Book Archive Webpage</h1>
+    <header>
+        <!-- search input and button hear -->
+               <div  class="input-group mb-3 w-50 mx-auto mt-5">
+                   <input id="search-input" type="text" class="form-control form-control-lg fs-5"
+                       placeholder="Search your best javascript books" aria-label="JS books name" aria-describedby="basic-addon2">
+                   <button class="input-group-text btn btn-outline-dark btn-lg fs-5" onclick="loadBooks()">Search</button>
+               </div>       
+    </header>
+
+    <main>
+ <section>
+<!-- card books -->
+    <div id="books-container" class="container mx-auto mt-5 row row-cols-1 row-cols-md-4 g-4"></div>
+
+ </section>
+    </main>
 
 
 
