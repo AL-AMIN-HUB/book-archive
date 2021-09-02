@@ -2,10 +2,10 @@
 const loadBooks = () => {
     const searchInput = document.getElementById('search-input');
     const searchText = searchInput.value;
-        // clear
-        searchInput.value = '';
+    // clear input value
+    searchInput.value = '';
 
-        // error handle
+    // error handle
     if (searchText === '') {
         errorMessage();
     }
@@ -20,7 +20,7 @@ const loadBooks = () => {
     
 };
 
-// error message
+// empty search for error message
 const errorMessage = () => {
     const errorMess = document.getElementById('error-message');
     errorMess.textContent = '';
@@ -34,30 +34,44 @@ const errorMessage = () => {
 
 // books card declare
 const bookCard = (books) => {
-    const booksContainer = document.getElementById('books-container');
-    const booksResults = document.getElementById('resultDiv');
-    booksContainer.textContent = '';
-    booksResults.textContent = '';
+    // error handle
+    if(books.length === 0){
+        errorMessage();
+        document.getElementById('error-message').style.display = 'block';
+        const booksContainer = document.getElementById('books-container');
+        const booksResults = document.getElementById('resultDiv');
+        booksContainer.textContent = '';
+        booksResults.textContent = '';
+    }
+    else{
+        document.getElementById('error-message').style.display = 'none';
+        const booksContainer = document.getElementById('books-container');
+        const booksResults = document.getElementById('resultDiv');
+        booksContainer.textContent = '';
+        booksResults.textContent = '';
 
-    // books results
-    const div = document.createElement('div');
-    div.innerHTML = `
-    <h5 class="display-6 fs-5 fw-bolder container text-center mt-5">About result found: <span class="text-info fw-bolder">${books.length}</span></h5>`;
-    booksResults.appendChild(div);
+        // books results
+        const div = document.createElement('div');
+        div.innerHTML = `
+            <h5 class="display-6 fs-5 fw-bolder container text-center mt-5">About result found: <span class="text-info fw-bolder">${books.length}</span></h5>`;
+        booksResults.appendChild(div);
+
+        // get each book 
         books.forEach(book => {
-            // all books card
-        const cardDiv = document.createElement('div');
-        cardDiv.innerHTML = `
-        <div class="col">
-            <div class="card h-100 border-0 shadow rounded-3">
-                    <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" class="card-img-top d-block img-fluid" alt="Cover image">
-                <div class="card-body">
-                    <h6 class="card-title">Book Name: <span class="text-primary">${book.title}</span></h6>
-                    <p class="card-text">Author: ${book.author_name} </p>
-                    <p class="card-text">First Published: ${book.publish_year} </p>
+            // all books card dynamically creating
+            const cardDiv = document.createElement('div');
+            cardDiv.innerHTML = `
+            <div class="col">
+                <div class="card h-100 border-0 shadow rounded-3">
+                        <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" class="card-img-top d-block img-fluid" alt="Cover image">
+                    <div class="card-body">
+                        <h6 class="card-title">Book Name: <span class="text-primary">${book.title}</span></h6>
+                        <p class="card-text">Author: ${book.author_name} </p>
+                        <p class="card-text">First Published: ${book.publish_year} </p>
+                    </div>
                 </div>
-            </div>
-        </div>`;
-        booksContainer.appendChild(cardDiv);
+            </div>`;
+            booksContainer.appendChild(cardDiv);
         })
+    }
 };
